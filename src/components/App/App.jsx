@@ -1,12 +1,11 @@
-import './App.css'
-import Navbar from './components/Navbar/Navbar';
+import Navbar from '../Navbar/Navbar';
 import { useParams } from 'react-router';
-import Header from './components/Header/Header';
-import Home from './components/Home/Home';
-import Shop from './components/Shop/Shop';
-import Cart from './components/Cart/Cart';
+import Header from '../Header/Header';
+import Home from '../Home/Home';
+import Shop from '../Shop/Shop';
+import Cart from '../Cart/Cart';
 import { useEffect, useState } from 'react';
-import getProducts from './getProducts';
+import getProducts from '../../getProducts';
 
 function App() {
     const { page } = useParams();

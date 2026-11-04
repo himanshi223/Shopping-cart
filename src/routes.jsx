@@ -1,4 +1,4 @@
-import App from './App.jsx'
+import App from './components/App/App.jsx'
 
 const routes = [
   {
