@@ -2,7 +2,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { createMemoryRouter, RouterProvider } from "react-router";
-import routes from "./routes";
+import routes from "../../routes";
 
 function setup(){
   const router = createMemoryRouter(routes);
