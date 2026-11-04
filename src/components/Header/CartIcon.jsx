@@ -31,7 +31,7 @@ const CartIcon = ({items}) => {
         <StyledContainer as={Link} to="/cart" aria-label="cart-icon">
             {items!==0?
             <Items>
-                <div>{items}</div>
+                <p aria-label="items in cart">{items}</p>
             </Items>
             :""}
             <StyledCart />
