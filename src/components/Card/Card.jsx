@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import StyledButton from "../Button/StyledButton";
 import { useState } from "react";
+import { Minus, Plus } from "lucide-react";
 
 const Container = styled.div`
     padding: 2rem;
@@ -10,6 +11,12 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
 `
+const QuantityContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+`
+
 const StyledPara = styled.p`
     font-size: 1.2rem;
 `
@@ -31,22 +38,35 @@ const Price = styled.p`
 `
 const Input = styled.input`
     background-color: #e5f3c5;
-    width: 50%;
+    width: 4ch;
     font-size: 1.5rem;
+    padding: 0.1rem;
 `
 const Form = styled.form`
     display: flex;
     flex-wrap: wrap;
-    gap: 0.3rem;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 1.2rem;
+    padding: 0.2rem;
+    margin-top: 1rem;
 `
-const AddButton = styled(StyledButton)`
+const Button = styled(StyledButton)`
     font-size: 1.2rem;
     padding: 0.5rem;
+
+    &:active{
+    transform: scale(0.9);
+    box-shadow: 1px 1px 1px black;
+    }
+`
+const SmallButton = styled(Button)`
+    font-size: 1rem;
+    padding: 0.1rem;
 `
 
 const Card = ({product,addItemToCart})=>{
-    console.log(product);
     const [quantity,setQuantity] = useState(1);
 
     return (
@@ -58,16 +78,27 @@ const Card = ({product,addItemToCart})=>{
             <Price aria-label="price">${product.price}</Price>
             <StyledPara data-testid="rating">Rating: {product.rating.rate}/5</StyledPara>
             <Form id="add-to-cart" onSubmit={(e)=>{
-                e.preventDefault();
-                addItemToCart(product, quantity);
-                e.target.reset();
+                    e.preventDefault();
+                    addItemToCart(product, quantity);
+                    e.target.reset();
+                    setQuantity(1);
                 }}>
-                <label htmlFor="quantity">Please select quanity</label>
-                <Input type="number" min="1" id="quantity" defaultValue="1" onChange={(e)=>{
-                    console.log(e.target.value);
-                    setQuantity(e.target.value);
-                }}/>
-                <AddButton type="submit">Add to Cart</AddButton>
+                <div>
+                    <label htmlFor="quantity">Please select a quantity to add</label>
+                    <QuantityContainer>
+                        <SmallButton type="button" onClick={()=>{
+                            if(quantity>1)
+                                setQuantity(quantity-1);
+                        }} aria-label="decrease"><Minus/></SmallButton>
+                        <Input type="number" min="1" id="quantity" value={quantity} onChange={(e)=>{
+                            setQuantity(e.target.value);
+                        }}/>
+                        <SmallButton type="button" onClick={()=>{
+                            setQuantity(quantity+1);
+                        }} aria-label="increase"><Plus/></SmallButton>
+                    </QuantityContainer>
+                </div>
+                <Button type="submit">Add to Cart</Button>
             </Form>
         </Container>
     )
