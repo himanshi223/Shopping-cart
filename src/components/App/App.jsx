@@ -6,6 +6,13 @@ import Shop from '../Shop/Shop';
 import Cart from '../Cart/Cart';
 import { useEffect, useState } from 'react';
 import getProducts from '../../getProducts';
+import styled from 'styled-components';
+
+const Container = styled.div`
+    position: sticky;
+    top: 0;
+    width: 100%;
+`
 
 function App() {
     const { page } = useParams();
@@ -35,8 +42,10 @@ function App() {
 
     return (
         <>
-            <Header items = {total}/>
-            <Navbar />
+            <Container>
+                <Header items = {total}/>
+                <Navbar />
+            </Container>
             {page  === "home" || page === ""? (
                 <Home />
             ) : page === "shop" ? (
