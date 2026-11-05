@@ -8,11 +8,21 @@ const Container = styled.div`
     gap: 6rem;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 800px){
+        flex-direction: column;
+        text-align: center;
+        gap: 4rem;
+    }
 `
 const Img  = styled.img`
     width: 35%;
     object-fit: fill;
     box-shadow: 3px 3px 5px #589864;
+
+    @media (max-width: 800px){
+        width: 60%;
+    }
 `
 const Main = styled.main`
     height: 100%;

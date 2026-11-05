@@ -12,11 +12,24 @@ const Container = styled.div`
     &>*{
         width: 10%;
     }
+    @media (max-width: 800px){
+        gap: 0.5rem;
+        padding: 1rem;
+
+        &>*{
+        width: 20%;
+        }
+    }
 `
 const InnerContainer = styled.div`
     display: flex;
     gap: 1rem;
     align-items: center;
+
+    @media (max-width: 800px){
+        gap: 0.5rem;
+        padding: 1rem;
+    }
 `
 
 const Image = styled.img`
@@ -30,11 +43,19 @@ const Text = styled.p`
 
 const Heading = styled.h2`
     text-align: center;
+    @media (max-width: 800px){
+        font-size: 1rem;
+    }
 `
 const Button  = styled.button`
     background-color: #b0cfaf;
     border: none;
     padding: 0.2rem;
+
+    @media (max-width: 800px){
+        font-size: 1rem;
+        padding: 0;
+    }
 `
 
 const Cart = () => {

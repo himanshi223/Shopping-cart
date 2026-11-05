@@ -7,10 +7,22 @@ import { useOutletContext } from "react-router";
 const Container = styled.div`
     padding: 2rem;
     background-color: #dcf1d2;
-    width: 30%;
+    width: 45%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+
+    @media (max-width: 1500px){
+        width: 70%;
+    }
+
+    @media (max-width: 1200px){
+        width: 90%;
+    }
+    
+    @media (max-width: 600px){
+        width: 100%;
+    }
 `
 const QuantityContainer = styled.div`
     display: flex;

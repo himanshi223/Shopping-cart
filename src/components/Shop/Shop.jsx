@@ -8,6 +8,10 @@ const Container = styled.div`
     flex-wrap: wrap;
     justify-content: space-evenly;
     gap: 3rem;
+
+    @media (max-width: 800px){
+      padding: 2rem;
+    }
 `
 
 const Shop = () => {

@@ -5,6 +5,11 @@ import styled from "styled-components"
 const StyledCart = styled(ShoppingCart)`
     height: 4rem;
     width: 4rem;
+
+    @media (max-width: 600px){
+        height: 2.5rem;
+        width: 2.5rem;
+    }
 `
 
 const StyledContainer = styled("div")`
@@ -24,6 +29,11 @@ const Items = styled.div`
     border-radius: 50%;
     position: absolute;
     right: 0;
+
+    @media (max-width: 600px){
+        height: 1rem;
+        width: 1rem;
+    }
 `
 
 const CartIcon = ({items}) => {

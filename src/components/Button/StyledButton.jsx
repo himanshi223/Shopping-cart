@@ -12,6 +12,9 @@ const StyledButton = styled.button`
         transform: scale(1.01);
     }
 
+    @media (max-width: 600px){
+        padding: 1rem 1.5rem;
+    }
 `
 
 export default StyledButton;

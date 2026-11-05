@@ -10,6 +10,10 @@ const StyledHeader = styled.header`
     justify-content: space-between;
     background-color: #10490e;
     color: #effdf4;
+
+    @media (max-width: 800px){
+        padding: 1rem;
+    }
 `
 const Header = ({items})=>{
     return (
