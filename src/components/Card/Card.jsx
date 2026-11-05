@@ -2,6 +2,7 @@ import styled from "styled-components";
 import StyledButton from "../Button/StyledButton";
 import { useState } from "react";
 import { Minus, Plus } from "lucide-react";
+import { useOutletContext } from "react-router";
 
 const Container = styled.div`
     padding: 2rem;
@@ -66,9 +67,9 @@ const SmallButton = styled(Button)`
     padding: 0.1rem;
 `
 
-const Card = ({product,addItemToCart})=>{
+const Card = ({product})=>{
     const [quantity,setQuantity] = useState(1);
-
+    const {addItemToCart} = useOutletContext();
     return (
         <Container>
             <ImgContainer>

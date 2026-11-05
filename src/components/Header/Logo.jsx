@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import styled from "styled-components"
 
 const Image = styled.img`
@@ -7,7 +8,7 @@ const Image = styled.img`
 `
 const Logo = () => {
     return (
-        <Image alt="logo" src="./src/assets/logo.png"/>
+       <Link to="/home"><Image alt="logo" src="./src/assets/logo.png"/></Link>
     )
 }
 

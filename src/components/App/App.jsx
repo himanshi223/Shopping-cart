@@ -1,9 +1,6 @@
 import Navbar from '../Navbar/Navbar';
-import { useParams } from 'react-router';
+import { Outlet} from 'react-router';
 import Header from '../Header/Header';
-import Home from '../Home/Home';
-import Shop from '../Shop/Shop';
-import Cart from '../Cart/Cart';
 import { useEffect, useState } from 'react';
 import getProducts from '../../getProducts';
 import styled from 'styled-components';
@@ -15,7 +12,6 @@ const Container = styled.div`
 `
 
 function App() {
-    const { page } = useParams();
     const [products, setProducts] = useState([]);
     const [items, setItems]= useState([]);
     const total = items.reduce((total, item)=>{
@@ -85,15 +81,7 @@ function App() {
                 <Header items = {total}/>
                 <Navbar />
             </Container>
-            {page  === "home" || page === ""? (
-                <Home />
-            ) : page === "shop" ? (
-                <Shop products={products} addItemToCart={addItemToCart}/>
-            ) : page === "cart" ? (
-                <Cart items = {items} increaseQuantity = {increaseQuantity} decreaseQuantity = {decreaseQuantity}/>
-            ) : (
-                <h2>Page Not Found</h2>
-            )}
+            <Outlet context={{products, items, addItemToCart, increaseQuantity, decreaseQuantity}}/>
         </>
     )
 }

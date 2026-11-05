@@ -1,4 +1,5 @@
 import { Minus, Plus } from "lucide-react";
+import { useOutletContext } from "react-router";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -36,7 +37,8 @@ const Button  = styled.button`
     padding: 0.2rem;
 `
 
-const Cart = ({items, increaseQuantity, decreaseQuantity}) => {
+const Cart = () => {
+    const {items, increaseQuantity, decreaseQuantity} = useOutletContext();
     let total = 0;
     items.forEach(item => {
         total+= item.product.price*item.quantity;

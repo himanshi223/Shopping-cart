@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Card from "../Card/Card";
+import { useOutletContext } from "react-router";
 
 const Container = styled.div`
     padding: 4rem;
@@ -9,8 +10,9 @@ const Container = styled.div`
     gap: 3rem;
 `
 
-const Shop = ({products, addItemToCart}) => {
-    const cards = products.map(product => <Card key={product.id} product={product} addItemToCart={addItemToCart} />)
+const Shop = () => {
+    const {products} = useOutletContext();
+    const cards = products.map(product => <Card key={product.id} product={product}/>)
     return (
         <Container>
            {cards}
