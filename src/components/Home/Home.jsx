@@ -29,7 +29,7 @@ const Home = () => {
     return (
         <Main>
             <Container>
-                <Img src="./src/assets/shop_large.jpg" alt="An illustration of a store front"/>
+                <Img src="/src/assets/shop_large.jpg" alt="An illustration of a store front"/>
                 <StyledPara aria-label="about us">
                     Get high quality products trusted by many delivered right at your doorstep from the comfort of your home.
                     To ramp up your already stunning style,
