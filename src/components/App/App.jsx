@@ -36,8 +36,47 @@ function App() {
     },[]);
 
     const addItemToCart = (product, quantity)=>{
+        let added = false;
+        items.forEach((item, index, items) => {
+            if(item.product.id === product.id){
+                const updatedItems = [...items.slice(0, index), ...items.slice(index+1, items.length)];
+                updatedItems.push({product: product, quantity: item.quantity + quantity});
+                console.log(updatedItems);
+                setItems(updatedItems)
+                added = true;
+            }
+        });
+        if(added) return;
         setItems([...items, {product: product, quantity: quantity}]);
-        console.log(items);
+    }
+
+    const increaseQuantity = (productId)=>{
+        items.forEach((item, index, items) => {
+            if(item.product.id === productId){
+                const updatedItems = [...items.slice(0, index)];
+                updatedItems.push({product: item.product, quantity: item.quantity+1});
+                updatedItems.push(...items.slice(index+1, items.length))
+                setItems(updatedItems)
+            }
+        });
+    }
+
+    const decreaseQuantity = (productId)=>{
+        items.forEach((item, index, items) => {
+            if(item.product.id === productId){
+                if(item.quantity > 1){
+                    const updatedItems = [...items.slice(0, index)];
+                    updatedItems.push({product: item.product, quantity: item.quantity-1});
+                    updatedItems.push(...items.slice(index+1, items.length))
+                    setItems(updatedItems)
+                }
+                else{
+                    const updatedItems = [...items.slice(0, index)];
+                    updatedItems.push(...items.slice(index+1, items.length))
+                    setItems(updatedItems)
+                }
+            }
+        });
     }
 
     return (
@@ -51,7 +90,7 @@ function App() {
             ) : page === "shop" ? (
                 <Shop products={products} addItemToCart={addItemToCart}/>
             ) : page === "cart" ? (
-                <Cart />
+                <Cart items = {items} increaseQuantity = {increaseQuantity} decreaseQuantity = {decreaseQuantity}/>
             ) : (
                 <h2>Page Not Found</h2>
             )}
